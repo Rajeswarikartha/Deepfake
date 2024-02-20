@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Video Detection</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #eff7f9;
+            background-image: url("{% static 'websiteimage.jpg' %}");
+            background-size: cover;
+            background-attachment: fixed; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px; /* Adjust width as needed */
+            margin-left: 20px; /* Adjust left margin */
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px; /* Larger font size for the heading */
+            margin-bottom: 20px; /* Space between heading and form */
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent white background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust shadow to make edges more visible */
+            border: 2px solid transparent; /* Add a transparent border */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Video for Fake Detection</h1>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="video">Choose a video file:</label>
+            <input type="file" id="video" name="video" accept="video/*" required>
+            <br>
+            <button type="submit">Upload and Check</button>
+        </form>
+    </div>
+</body>
+</html>
+
